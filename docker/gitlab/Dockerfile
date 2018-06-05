@@ -10,7 +10,7 @@ RUN     apt-get update \
             postfix \
     &&  curl -sS https://packages.gitlab.com/gpg.key | apt-key add - \
     &&  curl -sS https://packages.gitlab.com/install/repositories/gitlab/raspberry-pi2/script.deb.sh | os=raspbian dist=jessie bash - \
-    &&  apt-get update \
+    &&  apt-get update
 RUN     apt-get install -y \
             gitlab-ce \
     &&  gitlab-ctl reconfigure
