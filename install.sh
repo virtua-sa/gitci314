@@ -8,6 +8,8 @@ sudo apt-get install -y \
 
 # Install Docker
 curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker pi
+sudo apt-get install -y docker-compose
 
 # Clone Gitci314 repository
 git clone https://github.com/virtua-sa/gitci314.git 
