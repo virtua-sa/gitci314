@@ -4,7 +4,7 @@ This project is proudly offered to you by Virtua SA.
 
 ## Install
 
-1. `curl -sSL https://github.com/virtua-sa/gitci314/tree/master/install.sh | bash`
+1. `curl -sSL https://raw.githubusercontent.com/virtua-sa/gitci314/master/install.sh | bash`
 
 ## Licence
 
