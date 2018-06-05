@@ -1,7 +1,5 @@
 FROM resin/rpi-raspbian:stretch
 
-RUN apt-get update
-
 RUN     apt-get update \
     &&  apt-get install -y \
             apt-transport-https \
@@ -13,7 +11,7 @@ RUN     apt-get update \
     &&  curl -sS https://packages.gitlab.com/gpg.key | apt-key add - \
     &&  curl -sS https://packages.gitlab.com/install/repositories/gitlab/raspberry-pi2/script.deb.sh | os=raspbian dist=jessie bash - \
     &&  apt-get update \
-    &&  apt-get install -y \
+RUN     apt-get install -y \
             gitlab-ce \
     &&  gitlab-ctl reconfigure
 
