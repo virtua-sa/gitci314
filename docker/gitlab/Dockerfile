@@ -12,8 +12,8 @@ RUN     apt-get update \
     &&  curl -sS https://packages.gitlab.com/install/repositories/gitlab/raspberry-pi2/script.deb.sh | os=raspbian dist=jessie bash - \
     &&  apt-get update
 RUN     apt-get install -y \
-            gitlab-ce \
-    &&  gitlab-ctl reconfigure
+            gitlab-ce
+RUN     gitlab-ctl reconfigure
 
 # Expose web & ssh
 EXPOSE 443 80 22
