@@ -7,6 +7,7 @@ RUN     apt-get update \
             apt-transport-https \
             ca-certificates \
             curl \
+            dphis-swapfile \
             gnupg \
             openssh-server \
             postfix \
