@@ -3,14 +3,15 @@ MAINTAINER Virtua SA <info@virtua.ch>
 
 # Install required packages and add Gitlab repositories
 RUN     apt-get update \
-    &&  apt-get install -y \
+    &&  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             apt-transport-https \
             ca-certificates \
             curl \
             gnupg \
             openssh-server \
             postfix \
-            wget
+            wget \
+    &&  apt-get clean -y && apt-get clean -y && apt-get autoclean -y && rm -r /var/lib/apt/lists/*
 
 # Resolve error: TERM environment variable not set.
 ENV TERM xterm

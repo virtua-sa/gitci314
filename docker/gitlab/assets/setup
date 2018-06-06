@@ -3,9 +3,9 @@
 set -ex
 
 # Install GitLab
-wget --quiet https://packages.gitlab.com/gitlab/raspberry-pi2/packages/raspbian/jessie/gitlab-ce_${GITLAB_VERSION}_armhf.deb -O /tmp/gitlab.deb
-dpkg -i /tmp/gitlab.deb && rm /tmp/gitlab.deb
-rm -rf /var/lib/apt/lists/*
+wget --progress --quiet https://packages.gitlab.com/gitlab/raspberry-pi2/packages/raspbian/jessie/gitlab-ce_${GITLAB_VERSION}_armhf.deb -O /tmp/gitlab.deb
+dpkg -i /tmp/gitlab.deb
+rm /tmp/gitlab.deb
 
 # Create sshd daemon
 mkdir -p /opt/gitlab/sv/sshd/supervise /opt/gitlab/sv/sshd/log/supervise
@@ -55,3 +55,16 @@ sed -i "s/CONF_SWAPSIZE/CONF_SWAPSIZE=4096" /etc/dphys-swapfile
 #swapon /swapfile
 #echo "/swapfile none swap sw 0 0" >> /etc/fstab
 free -m
+
+# Clean all unecessary files (doc)
+find /usr/share/doc -depth -type f ! -name copyright|xargs rm || true
+find /usr/share/doc -empty|xargs rmdir || true
+rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/*
+rm -rf /usr/share/lintian/* /usr/share/linda/* /var/cache/man/*
+
+# Remove unnecessary files left after installations
+apt-get clean -y && apt-get clean -y && apt-get autoclean -y && rm -r /var/lib/apt/lists/*
+
+# Remove MOTD
+rm -rf /etc/update-motd.d /etc/motd /etc/motd.dynamic
+ln -fs /dev/null /run/motd.dynamic
