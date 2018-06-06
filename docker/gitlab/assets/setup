@@ -46,14 +46,11 @@ useradd -m -u 991 -g gitlab-consul -m -s /bin/sh -d /var/opt/gitlab/consul gitla
 
 # Increase swap size to 4GB since it's the minimum required amount of RAM for Gitlab
 free -m
-sed -i "s/CONF_SWAPSIZE/CONF_SWAPSIZE=4096" /etc/dphys-swapfile
-/etc/init.d/dphys-swapfile stop
-/etc/init.d/dphys-swapfile start
-#dd if=/dev/zero of=/swapfile bs=1024 count=4194304
-#chown root:root /swapfile
-#chmod 0600 /swapfile
-#swapon /swapfile
-#echo "/swapfile none swap sw 0 0" >> /etc/fstab
+dd if=/dev/zero of=/var/swap bs=1024 count=4194304
+chown root:root /var/swap
+chmod 0600 /var/swap
+swapon /var/swap
+echo "/var/swap none swap sw 0 0" >> /etc/fstab
 free -m
 
 # Clean all unecessary files (doc)
