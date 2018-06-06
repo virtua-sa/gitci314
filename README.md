@@ -10,6 +10,15 @@ This project is proudly offered to you by Virtua SA.
 
 *Warning: SSH port of your Raspberry Pi will be changed from 22 to 2022 to allow Git over SSH.*
 
+## Recommendations
+
+* Because Gitlab consumes a lot of RAM, this setup uses a 4GiB swap file
+  * In aim to increase the lifespan of your Raspberry Pi SD card, you should move this file to an USB drive with :
+    `SWAPFILE=/dev/sdaX install.sh`
+* If you have an intensive use of Gitlab CI runners, you should move the Gitlab Multi Runner image to another Raspberry Pi
+* In aim to have more space for your Git projects, move the shared folders to an external USB drive (see `docker-compose.yml` file)
+* Of course, this setup *MUST NOT* be used for production purpose. It is mainly a proof of concept and should be used as is.
+
 ## Licence
 
 This project is published under the terms of the Apache 2.0 licence.
