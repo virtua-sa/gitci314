@@ -78,7 +78,7 @@ GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
 # It will not be executed, because all services are not yet started
 # They will be started when `reconfigure` is executed
 echo "Configuring GitLab package..."
-/var/lib/dpkg/info/${RELEASE_PACKAGE}.preinst upgrade
+/var/lib/dpkg/info/gitlab-ce.preinst upgrade
 
 echo "Configuring GitLab..."
 gitlab-ctl reconfigure
