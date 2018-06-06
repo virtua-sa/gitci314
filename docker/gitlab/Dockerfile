@@ -7,7 +7,6 @@ RUN     apt-get update \
             apt-transport-https \
             ca-certificates \
             curl \
-            dphis-swapfile \
             gnupg \
             openssh-server \
             postfix \
@@ -31,7 +30,7 @@ RUN     /assets/setup
 EXPOSE 443 80 22
 
 # Define data volumes
-VOLUME ["/etc/gitlab", "/var/opt/gitlab", "/var/log/gitlab", "/var/swap"]
+VOLUME ["/etc/gitlab", "/var/opt/gitlab", "/var/log/gitlab"]
 
 # Wrapper to handle signal, trigger runit and reconfigure GitLab
 CMD ["/assets/wrapper"]

@@ -1,5 +1,8 @@
 gitlab:
   image: virtuasa/gitci314-gitlab:latest
+  cpu_shares: 1024
+  mem_limit: 512M
+  memswap_limit: 3584M
   ports:
     - '22:22'
     - '80:80'
@@ -8,4 +11,3 @@ gitlab:
     - ./srv/gitlab/config:/etc/gitlab
     - ./srv/gitlab/data:/var/opt/gitlab
     - ./srv/gitlab/logs:/var/log/gitlab
-    - ./srv/gitlab/swap:/var/swap
