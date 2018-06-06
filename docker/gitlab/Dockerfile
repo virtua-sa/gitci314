@@ -1,10 +1,6 @@
 FROM resin/rpi-raspbian:stretch
 MAINTAINER Virtua SA <info@virtua.ch>
 
-# Define version of Gitlab to install
-# See: https://packages.gitlab.com/gitlab/raspberry-pi2
-ARG GITLAB_VERSION=10.8.3-ce.0
-
 # Install required packages and add Gitlab repositories
 RUN     apt-get update \
     &&  apt-get install -y \
@@ -18,6 +14,10 @@ RUN     apt-get update \
 
 # Resolve error: TERM environment variable not set.
 ENV TERM xterm
+
+# Define version of Gitlab to install
+# See: https://packages.gitlab.com/gitlab/raspberry-pi2
+ARG GITLAB_VERSION=10.8.3-ce.0
 
 # Copy assets
 COPY assets/ /assets/
