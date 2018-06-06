@@ -1,8 +1,9 @@
 FROM resin/rpi-raspbian:stretch
 MAINTAINER Virtua SA <info@virtua.ch>
 
-# Resolve error: TERM environment variable not set.
-ENV TERM xterm
+# Define version of Gitlab to install
+# See: https://packages.gitlab.com/gitlab/raspberry-pi2
+ARG GITLAB_VERSION=10.8.3-ce.0
 
 # Install required packages and add Gitlab repositories
 RUN     apt-get update \
@@ -13,23 +14,16 @@ RUN     apt-get update \
             gnupg \
             openssh-server \
             postfix \
-    &&  curl -sSL https://packages.gitlab.com/gpg.key | apt-key add - \
-    &&  curl -sSL https://packages.gitlab.com/install/repositories/gitlab/raspberry-pi2/script.deb.sh | os=raspbian dist=jessie bash - \
-    &&  apt-get update
+            wget
 
-# Install Gitlab CE
-RUN     EXTERNAL_URL="http://localhost" apt-get install -y gitlab-ce
+# Resolve error: TERM environment variable not set.
+ENV TERM xterm
 
 # Copy assets
 COPY assets/ /assets/
 
-# Patch Omnibus Gitlab package and force it to use shipped gitlab.rb configuration file
-RUN     rm -f /etc/gitlab/gitlab.rb \
-    &&  sed -i "s/external_url 'GENERATED_EXTERNAL_URL'/# external_url 'GENERATED_EXTERNAL_URL'/" /opt/gitlab/etc/gitlab.rb.template \
-    &&  sed -i "s/\/etc\/gitlab\/gitlab.rb/\/assets\/gitlab.rb/" /opt/gitlab/embedded/cookbooks/gitlab/recipes/show_config.rb \
-    &&  sed -i "s/\/etc\/gitlab\/gitlab.rb/\/assets\/gitlab.rb/" /opt/gitlab/embedded/cookbooks/gitlab/recipes/config.rb
-# Configure Gitlab for the first time
-RUN     gitlab-ctl reconfigure
+# Install Gitlab
+RUN     /assets/setup
 
 # Expose web & ssh
 EXPOSE 443 80 22
