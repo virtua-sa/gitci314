@@ -26,6 +26,9 @@ COPY assets/ /assets/
 # Install Gitlab
 RUN     /assets/setup
 
+# Allow to access embedded tools
+ENV PATH /opt/gitlab/embedded/bin:/opt/gitlab/bin:/assets:$PATH
+
 # Expose web & ssh
 EXPOSE 443 80 22
 
