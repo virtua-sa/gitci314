@@ -1,6 +1,6 @@
 gitlab:
   image: virtuasa/gitci314-gitlab:latest
-  port:
+  ports:
     - '22:22'
     - '80:80'
     - '443:443'

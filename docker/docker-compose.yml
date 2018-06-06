@@ -1,6 +1,6 @@
 gitlab:
   build: ./gitlab
-  port:
+  ports:
     - '22:22'
     - '80:80'
     - '443:443'
