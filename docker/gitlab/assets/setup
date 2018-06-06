@@ -3,7 +3,7 @@
 set -ex
 
 # Install GitLab
-wget  --quiet --show-progress https://packages.gitlab.com/gitlab/raspberry-pi2/packages/raspbian/jessie/gitlab-ce_${GITLAB_VERSION}_armhf.deb -O /tmp/gitlab.deb
+wget  --quiet --show-progress https://packages.gitlab.com/gitlab/raspberry-pi2/packages/raspbian/jessie/gitlab-ce_${GITLAB_VERSION}_armhf.deb/download.deb -O /tmp/gitlab.deb
 dpkg -i /tmp/gitlab.deb
 rm /tmp/gitlab.deb
 
