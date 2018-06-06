@@ -3,6 +3,7 @@ gitlab:
   cpu_shares: 1024
   mem_limit: 512M
   memswap_limit: 3584M
+  privileged: true
   ports:
     - '22:22'
     - '80:80'
