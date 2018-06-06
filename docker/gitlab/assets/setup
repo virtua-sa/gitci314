@@ -45,12 +45,13 @@ useradd -m -u 992 -g gitlab-prometheus -m -s /bin/sh -d /var/opt/gitlab/promethe
 useradd -m -u 991 -g gitlab-consul -m -s /bin/sh -d /var/opt/gitlab/consul gitlab-consul
 
 # Increase swap size to 4GB since it's the minimum required amount of RAM for Gitlab
+dphys-swapfile uninstall
 free -m
-dd if=/dev/zero of=/var/swap bs=1024 count=4194304
+dd if=/dev/zero of=/var/swap bs=1MiB count=4GiB
 chown root:root /var/swap
 chmod 0600 /var/swap
-swapon /var/swap
-echo "/var/swap none swap sw 0 0" >> /etc/fstab
+mkswap /var/swap
+dphis-swapfile swapon
 free -m
 
 # Clean all unecessary files (doc)
