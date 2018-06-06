@@ -61,6 +61,9 @@ if [[ ! -f /etc/gitlab/ssh_host_ed25519_key ]]; then
 	chmod 0600 /etc/gitlab/ssh_host_ed25519_key
 fi
 
+# Fix potencial permission issues
+./update-permissions
+
 # Remove all services, the reconfigure will create them
 echo "Preparing services..."
 rm -f /opt/gitlab/service/*
