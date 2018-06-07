@@ -1,3 +1,16 @@
+# Raspberry PI related settings
+
+# Disable Prometheus monitoring for better performances
+prometheus_monitoring['enable'] = false
+# Increase timeouts for slow requests
+gitlab_rails['git_timeout'] = 600
+nginx['keepalive_timeout'] = 300
+unicorn['worker_timeout'] = 300
+# Increase the number of Unicorn workers
+unicorn['worker_processes'] = 3
+
+# Classic Gitlab Omnibus Docker Image options
+
 # Docker options
 
 # Prevent Postgres from trying to allocate 25% of total memory
@@ -9,9 +22,6 @@ manage_accounts['enable'] = false
 # Get hostname from shell
 host = `hostname`.strip
 external_url "http://#{host}"
-
-# Disable Prometheus monitoring for better performances on RPi
-prometheus_monitoring['enable'] = false
 
 # Load custom config from environment variable: GITLAB_OMNIBUS_CONFIG
 # Disabling the cop since rubocop considers using eval to be security risk but
