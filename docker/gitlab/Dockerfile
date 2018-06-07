@@ -18,7 +18,7 @@ ENV TERM xterm
 
 # Define version of Gitlab to install
 # See: https://packages.gitlab.com/gitlab/raspberry-pi2
-ARG GITLAB_VERSION=10.8.3-ce.0
+ARG GITLAB_VERSION=10.8.4-ce.0
 
 # Copy assets
 COPY assets/ /assets/
