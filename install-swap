@@ -9,8 +9,8 @@ SWAPSIZE=${1:-6}
 SWAPFILE=${2:-/var/swap}
 sudo dphys-swapfile swapoff
 free -m
-sudo sed -i "s/CONF_SWAPSIZE/CONF_SWAPSIZE=$((SWAPSIZE*1024))/g" /etc/dphys-swapfile
-sudo sed -i "s/CONF_SWAPFILE/CONF_SWAPFILE=${SWAPFILE}/g" /etc/dphys-swapfile
+sudo sed -i "s/.*CONF_SWAPSIZE.*/CONF_SWAPSIZE=$((SWAPSIZE*1024))/g" /etc/dphys-swapfile
+sudo sed -i "s/.*CONF_SWAPFILE.*/CONF_SWAPFILE=${SWAPFILE}/g" /etc/dphys-swapfile
 sudo dd if=/dev/zero | pv -s ${SWAPSIZE}G | sudo dd of=${SWAPFILE} bs=1024 count=$((SWAPSIZE*1024*1024))
 sudo chown root:root ${SWAPFILE}
 sudo chmod 0600 ${SWAPFILE}
