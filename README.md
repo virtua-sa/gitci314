@@ -16,9 +16,11 @@ So it might be a good idea to take a good cup of chocolate/coffee/tea while read
 
 ## Recommendations
 
-* Because Gitlab consumes a lot of RAM, this setup uses a 4GiB swap file
+* Because Gitlab consumes a lot of RAM, this setup uses a 6GiB swap file
   * In aim to increase the lifespan of your Raspberry Pi SD card, you should move this file to an USB drive with :
     `SWAPFILE=/dev/sdaX ./install`
+    or after the installation with:
+    `./install-swap 6 /dev/sdaX`
 * If you have an intensive use of Gitlab CI runners, you should move the Gitlab Multi Runner image to another Raspberry Pi
 * In aim to have more space for your Git projects, move the shared folders to an external USB drive (see `docker-compose.yml` file)
 * Of course, this setup *MUST NOT* be used for production purpose. It is mainly a proof of concept and should be used as is.
