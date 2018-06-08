@@ -22,6 +22,33 @@ Also, first access to Gitlab may be very slow but it improves greatly after few 
 * In aim to have more space for your Git projects, move the shared folders to an external USB drive (see `docker-compose.yml` file)
 * Of course, this setup *MUST NOT* be used for production purpose. It is mainly a proof of concept and should be used as is.
 
+## HowTo
+
+### Login to Gitlab for the first time
+
+* Simply open the URL `http://<your_raspberrypi_ip>` in your favorite browser then set a new password for `root` account
+
+### Register a new Gitlab Runner for CI
+
+1. Grab the registration token of your Gitlab here: `http://<your_raspberrypi_ip>/admin/runners`
+2. Run following command on your Raspberry Pi:
+   ```sh
+   docker-compose run runner register \
+     --non-interactive \
+     --executor "docker" \
+     --url "http://gitlab/" \
+     --registration-token "<your_registration_token>" \
+     --description "Docker Runner" \
+     --tag-list "docker,rpi" \
+     --run-untagged \
+     --locked="false"
+   ```
+3. Restart the runner: `docker-compose restart runner`
+
+### Fix permission problems when upgrading Gitlab
+
+* `docker-compose gitlab run update-permissions`
+
 ## Licence
 
 This project is published under the terms of the Apache 2.0 licence.

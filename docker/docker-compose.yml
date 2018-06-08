@@ -13,12 +13,14 @@ gitlab:
     - ../srv/gitlab/data:/var/opt/gitlab
     - ../srv/gitlab/logs:/var/log/gitlab
 
-gitlab-runner:
+runner:
   build: ./gitlab-runner
   cpu_shares: 256
   mem_limit: 128M
   memswap_limit: 128M
   privileged: true
+  links:
+    - gitlab
   volumes: 
     - ../srv/gitlab-runner:/home/gitlab-runner
     - /var/run/docker.sock:/var/run/docker.sock

@@ -4,6 +4,7 @@ gitlab:
   mem_limit: 512M
   memswap_limit: 3584M
   privileged: true
+  restart: always
   ports:
     - '22:22'
     - '80:80'
@@ -12,3 +13,16 @@ gitlab:
     - ./srv/gitlab/config:/etc/gitlab
     - ./srv/gitlab/data:/var/opt/gitlab
     - ./srv/gitlab/logs:/var/log/gitlab
+
+runner:
+  image: virtuasa/gitci314-runner:latest
+  cpu_shares: 256
+  mem_limit: 128M
+  memswap_limit: 128M
+  privileged: true
+  restart: always
+  links:
+    - gitlab
+  volumes: 
+    - ./srv/gitlab-runner:/home/gitlab-runner
+    - /var/run/docker.sock:/var/run/docker.sock
