@@ -1,3 +1,6 @@
+# This file is based on the work done by the Gitlab folks for their omnibus-gitlab package.
+# See: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/docker/Dockerfile
+
 FROM resin/rpi-raspbian:stretch
 MAINTAINER Virtua SA <info@virtua.ch>
 

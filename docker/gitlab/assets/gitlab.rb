@@ -1,3 +1,6 @@
+# This file is based on the work done by the Gitlab folks for their omnibus-gitlab package.
+# See: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/docker/assets/gitlab.rb
+
 # Raspberry PI related settings
 
 # Disable Prometheus monitoring for better performances
