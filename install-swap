@@ -4,9 +4,9 @@
 # SWAP may reduce dramatically the lifespan of your RPi SD Card
 # So we highly recommend to move following file on a USB drive
 # Size of the swap file, in GiB:
-${SWAPSIZE}=${1:-6}
+SWAPSIZE=${1:-6}
 # Path of the swap file:
-${SWAPFILE}=${2:-/var/swap}
+SWAPFILE=${2:-/var/swap}
 sudo dphys-swapfile swapoff
 free -m
 sudo sed -i "s/CONF_SWAPSIZE/CONF_SWAPSIZE=$((SWAPSIZE*1024))/g" /etc/dphys-swapfile
