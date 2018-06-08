@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Increase swap size to 4GB
+# Increase swap size to 6GB (4GB for Gitlab, and 2GB for CI runners)
 # SWAP may reduce dramatically the lifespan of your RPi SD Card
 # So we highly recommend to move following file on a USB drive
 # Size of the swap file, in GiB:
-${SWAPSIZE}=${1:-4}
+${SWAPSIZE}=${1:-6}
 # Path of the swap file:
 ${SWAPFILE}=${2:-/var/swap}
 sudo dphys-swapfile swapoff

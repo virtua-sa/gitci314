@@ -1,8 +1,8 @@
 gitlab:
   image: virtuasa/gitci314-gitlab:latest
   cpu_shares: 1024
-  mem_limit: 512M
-  memswap_limit: 3584M
+  mem_limit: 512m
+  memswap_limit: 4g
   privileged: true
   restart: always
   ports:
@@ -17,8 +17,8 @@ gitlab:
 runner:
   image: virtuasa/gitci314-runner:latest
   cpu_shares: 256
-  mem_limit: 128M
-  memswap_limit: 128M
+  mem_limit: 128m
+  memswap_limit: 512m
   privileged: true
   restart: always
   links:
