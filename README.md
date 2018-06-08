@@ -8,10 +8,11 @@ This project is proudly offered to you by Virtua SA.
 2. [Flash](https://etcher.io/) a [Raspbian image](https://downloads.raspberrypi.org/raspbian_latest) on it
 3. `curl -sSL https://raw.githubusercontent.com/virtua-sa/gitci314/master/install | bash`
 
-It takes up to 30 minutes to run Gitlab for the first time.
+*It takes up to 30 minutes to run Gitlab for the first time.
 Also, first access to Gitlab may be very slow but it improves greatly after few requets.
+So it might be a good idea to take a good cup of chocolate/coffee/tea while reading [what Virtua SA can do for you](https://www.virtua.ch/en/services/) or [looking for your next job opportunity](https://www.virtua.ch/en/carrieres/) during the process ;)*
 
-*Warning: SSH port of your Raspberry Pi will be changed from 22 to 2022 to allow Git over SSH.*
+***Warning:** SSH port of your Raspberry Pi will be changed from 22 to 2022 to allow Git over SSH.*
 
 ## Recommendations
 
