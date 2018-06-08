@@ -39,6 +39,7 @@ So it might be a good idea to take a good cup of chocolate/coffee/tea while read
    docker-compose run runner register \
      --non-interactive \
      --executor "docker" \
+     --docker-image "resin/rpi-raspbian:stretch" \
      --url "http://gitlab/" \
      --registration-token "<your_registration_token>" \
      --description "Docker Runner" \
