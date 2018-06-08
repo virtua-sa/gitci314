@@ -5,6 +5,10 @@ gitlab:
   memswap_limit: 4g
   privileged: true
   restart: always
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      # Add gitlab.rb configuration here, each on its own line
+      # See: https://docs.gitlab.com/omnibus/settings/configuration.html
   ports:
     - '22:22'
     - '80:80'
