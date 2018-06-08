@@ -7,6 +7,7 @@
 SWAPSIZE=${1:-6}
 # Path of the swap file:
 SWAPFILE=${2:-/var/swap}
+echo "Creating a swap file of ${SWAPSIZE}GiB at ${SWAPFILE} ..."
 sudo dphys-swapfile swapoff
 free -m
 sudo sed -i "s/.*CONF_SWAPSIZE.*/CONF_SWAPSIZE=$((SWAPSIZE*1024))/g" /etc/dphys-swapfile
