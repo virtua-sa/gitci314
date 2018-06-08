@@ -9,8 +9,8 @@ prometheus_monitoring['enable'] = false
 gitlab_rails['git_timeout'] = 600
 nginx['keepalive_timeout'] = 300
 unicorn['worker_timeout'] = 300
-# Increase the number of Unicorn workers
-unicorn['worker_processes'] = 3
+# Set only 2 workers for Unicorn
+unicorn['worker_processes'] = 2
 
 # Classic Gitlab Omnibus Docker Image options
 
