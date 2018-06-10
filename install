@@ -25,4 +25,4 @@ sudo sed -i 's/.*Port .*/Port 2022/g' /etc/ssh/sshd_config
 sudo /etc/init.d/ssh restart
 
 # Run Gitci314 !
-screen docker-compose up -d
+screen docker-compose up
