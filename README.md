@@ -37,16 +37,16 @@ So it might be a good idea to take a good cup of chocolate/coffee/tea while read
 2. Run following command on your Raspberry Pi:
    ```sh
    docker-compose run runner register \
-     --non-interactive \
      --executor "docker" \
      --docker-image "resin/rpi-raspbian:stretch" \
      --url "http://gitlab/" \
-     --registration-token "<your_registration_token>" \
      --description "Docker Runner" \
      --tag-list "docker,rpi" \
      --run-untagged \
      --locked="false"
    ```
+   *Notes: you can use default settings, but make sure to provide your registration token when asked.
+   If you get a timeout error from Docker, rerun the command.*
 3. Restart the runner: `docker-compose restart runner`
 
 ### Fix permission problems when upgrading Gitlab
