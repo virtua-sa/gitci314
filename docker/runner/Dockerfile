@@ -9,6 +9,7 @@ RUN     apt-get update \
             curl \
             git \
             gnupg \
+            tzdata \
             wget \
     &&  apt-get clean -y && apt-get clean -y && apt-get autoclean -y && rm -r /var/lib/apt/lists/*
 
