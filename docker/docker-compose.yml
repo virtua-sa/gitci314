@@ -26,5 +26,6 @@ runner:
   links:
     - gitlab
   volumes: 
-    - ../srv/gitlab-runner:/home/gitlab-runner
+    - ../srv/runner/config:/etc/gitlab-runner
+    - ../srv/runner/data:/home/gitlab-runner
     - /var/run/docker.sock:/var/run/docker.sock
