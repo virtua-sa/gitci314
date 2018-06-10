@@ -18,7 +18,7 @@ gitlab:
     - ../srv/gitlab/logs:/var/log/gitlab
 
 runner:
-  build: ./gitlab-runner
+  build: ./runner
   cpu_shares: 256
   mem_limit: 128m
   memswap_limit: 512m

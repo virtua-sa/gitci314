@@ -10,5 +10,5 @@ RUN     curl -sSL https://gitlab-runner-downloads.s3.amazonaws.com/latest/binari
 
 VOLUME ["/home/gitlab-runner", "/var/run/docker.sock"]
 
-CMD ["start"]
+CMD ["run"]
 ENTRYPOINT ["gitlab-runner"]
