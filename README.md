@@ -8,7 +8,9 @@ This project is proudly offered to you by Virtua SA.
 
 1. [Get a Raspberry Pi 3 Model B+](https://www.raspberrypi.org/products/) (but it should works with RPi 2B (64b) and 3B too)
 2. [Flash](https://etcher.io/) a [Raspbian image](https://downloads.raspberrypi.org/raspbian_latest) on it
-3. `curl -sSL https://raw.githubusercontent.com/virtua-sa/gitci314/master/install | bash`
+3. `sudo raspi-config`
+  * Configure your WiFi, enable SSH, allow only 16MB of RAM for the GPU ...
+4. `curl -sSL https://raw.githubusercontent.com/virtua-sa/gitci314/master/install | bash`
 
 *It takes up to 30 minutes to run Gitlab for the first time.
 Also, first access to Gitlab may be very slow but it improves greatly after few requets.
@@ -23,7 +25,7 @@ So it might be a good idea to take a good cup of chocolate/coffee/tea while read
     `SWAPFILE=/dev/sdaX ./install`
     or after the installation with:
     `./install-swap 6 /dev/sdaX`
-* If you have an intensive use of Gitlab CI runners, you should move the Gitlab Multi Runner image to another Raspberry Pi
+* If you have an intensive use of Gitlab CI runners or if you have security concerns regarding your data, you should move the Gitlab Multi Runner image to another Raspberry Pi
 * In aim to have more space for your Git projects, move the shared folders to an external USB drive (see `docker-compose.yml` file)
 * Of course, this setup *MUST NOT* be used for production purpose. It is mainly a proof of concept and should be used as is.
 
@@ -37,6 +39,7 @@ So it might be a good idea to take a good cup of chocolate/coffee/tea while read
 
 1. Grab the registration token of your Gitlab here: `http://<your_raspberrypi_ip>/admin/runners`
 2. Run following command on your Raspberry Pi:
+
    ```sh
    docker-compose run runner register \
      --executor "docker" \
@@ -47,8 +50,11 @@ So it might be a good idea to take a good cup of chocolate/coffee/tea while read
      --run-untagged \
      --locked="false"
    ```
+
    *Notes: you can use default settings, but make sure to provide your registration token when asked.
    If you get a timeout error from Docker, rerun the command.*
+
+   ***Warning:** if you run Gitlab and the gitlab-runner on the same Raspberry Pi, you may encounter issues with the `docker` executor, so you should use only the `shell` executor instead.*
 3. Restart the runner: `docker-compose restart runner`
 
 ### Fix permission problems when upgrading Gitlab
