@@ -9,7 +9,7 @@ This project is proudly offered to you by Virtua SA.
 1. [Get a Raspberry Pi 3 Model B+](https://www.raspberrypi.org/products/) (but it should works with RPi 2B (64b) and 3B too)
 2. [Flash](https://etcher.io/) a [Raspbian image](https://downloads.raspberrypi.org/raspbian_latest) on it
 3. `sudo raspi-config`
-  * Configure your WiFi, enable SSH, allow only 16MB of RAM for the GPU ...
+   * Configure your WiFi, enable SSH, allow only 16MB of RAM for the GPU ...
 4. `curl -sSL https://raw.githubusercontent.com/virtua-sa/gitci314/master/install | bash`
 
 *It takes up to 30 minutes to run Gitlab for the first time.
