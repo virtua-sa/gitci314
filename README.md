@@ -1,4 +1,6 @@
-# Gitci314 - Gitlab CI for Raspberry Pi 3+
+# Gitci314 - Gitlab CI for Raspberry Pi 3B+
+
+> Run Gitlab and Gitlab CI on a Raspberry Pi 3 Model B+ with Docker !
 
 This project is proudly offered to you by Virtua SA.
 
